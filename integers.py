@@ -44,6 +44,6 @@ def triangle (a,b,c):
         return true
     else:
         return false
-#or change return for "Print (Triangle exist) etc"
+#or change return for "Print (Triangle exist) etc."
 
 
