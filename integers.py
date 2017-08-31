@@ -30,17 +30,17 @@ S = 6 * (a ** 2)
 print(V, S)
 
 #6 task
-import math
-import sys
-import stdio
-
-b = float(sys.argv[1])
-c = float(sys.argv[2])
-
-discriminant = b*b - 4.0*c
-d = math.sqrt(discriminant)
-stdio.writeln((-b + d) / 2.0)
-stdio.writeln((-b - d) / 2.0)
+# import math
+# import sys
+# import stdio
+#
+# b = float(sys.argv[1])
+# c = float(sys.argv[2])
+#
+# discriminant = b*b - 4.0*c
+# d = math.sqrt(discriminant)
+# stdio.writeln((-b + d) / 2.0)
+# stdio.writeln((-b - d) / 2.0)
 
 
 
@@ -57,5 +57,23 @@ def triangle (a,b,c):
     else:
         return false
 #or change return for "Print (Triangle exist) etc."
+
+#Write an function wich creates and initialises matrix. Entry  - m,n,k
+#m, n height and width. K - element wich will be initialising the matrix.
+
+#Testing,  i want to know how built matrix, before start
+n = 4
+a = [[0] * n for i in range(n)]
+for i in range(n):
+    for j in range(n):
+        if i < j:
+            a[i][j] = 0
+        elif i > j:
+            a[i][j] = 2
+        else:
+            a[i][j] = 1
+for row in a:
+    print(' '.join([str(elem) for elem in row]))
+
 
 
