@@ -32,9 +32,37 @@ print(V, S)
 # Hello world ten times
 print("Hello world "  * 10)
 
-#
-
-
+#Lists
+a = [[1,2,3],[4,5,6]]
+print(a[0])
+b = a[0]
+print(b)
+#---------------
+a = [[1,2,3,4,5],[6,7],[8,9,10]]
+for i in range(len(a)):
+    for j in range(len(a[i])):
+        print(a[i][j], end=" ")
+        print()
+#---------------
+#Переменная цикла фор в питоне перебирает любіе єлементы
+#Любой последовательности
+a = [[1,2],[2,3,4],[4,5,6,7]]
+for row in a:
+    # for elem in row:
+        print(row)
+        print()
+#---------------
+#Попробую с помощью первого цикла перебрать номер стоки
+#С помощью второго пробежаться по элементам внутри строки
+a = [[1,2],[2,3,4],[5,6,7],[8,9]]
+for row in a:
+    for elem in row:
+        print(elem, end=" ")
+        print()
+#---------------
+#Вывод одной строки с помощью метода join
+for row in a:
+    print(' '.join([str(elem) for elem in row]))
 
 #-----------------------------------------------------
 # Tasks from task.txt
