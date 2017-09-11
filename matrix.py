@@ -50,16 +50,33 @@ for i in range(n): #для "и" в пределах "н", а н у нас это
 # Пример 5
 #----------------------------------------------------------------------
 # print('Enter the numbers?')
-n = 3
+
+n = int(input())
 a = []
 for i in range(n):
     row = input().split()
-    for row in range(len(row)):
+    for i in range(len(row)):
         row[i] = int(row[i])
-        a.append(row)
+    a.append(row)
     print(a)
 
+
+# Второй способ при помощи генератора
+n = int(input())
+a = [[int(j) for j in input().split()] for i in range(n)]
 #----------------------------------------------------------------------
 # Пример 6
 #----------------------------------------------------------------------
 
+n = 4
+a = [[0] * n for i in range(n)]
+for i in range(n):
+    for j in range(n):
+        if i < j:
+            a[i][j] = 0
+        elif i > j:
+            a[i][j] = 2
+        else:
+            a[i][j] = 1
+for row in a:
+    print(' '.join([str(elem) for elem in row]))
