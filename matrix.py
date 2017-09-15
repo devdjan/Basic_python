@@ -108,3 +108,8 @@ for i in range(n):
 
 
 # Надо смотеть в сторону - - -> list comprehension
+
+# Stackoverflow. Generating matrix of size 5 filled 0
+matrix1 = [[]]
+
+matrix1 = [[0 for i in range(5)] for i in xrange(5)]
