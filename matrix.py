@@ -107,9 +107,26 @@ for i in range(n):
 #          " ".join(матрица)
 
 
-# Надо смотеть в сторону - - -> list comprehension
+def generate_list(m, k):
+    result = []
+    for i in range(m):
+        result.append(k)
+    return result
 
-# Stackoverflow. Generating matrix of size 5 filled 0
-matrix1 = [[]]
+#Test values
+generate_list(10,-1)
+generate_list(9,3)
 
-matrix1 = [[0 for i in range(5)] for i in xrange(5)]
+#Our function wich creates and initializes matrix
+def generate_matrix(m, n, k):
+    result = []
+    for i in range(m):
+        result.append([k]*n)
+    return result
+
+print(generate_matrix(2, 3, -1))
+
+# initializing(defining) matrix
+def generate_matrix(m, n, k):
+    return generate_list(m, generate_list(n, k))
+print(generate_matrix(2,3,-1))
