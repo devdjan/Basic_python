@@ -73,11 +73,11 @@ triangle(4,5,6)
 # FizzBuzz
 #--------------------------------------------------------
 for i in range(1,100):
-    if i % 3:
+    if i % 3 == 0:
         print("Fizz")
-    if i % 5:
+    if i % 5 == 0:
         print("Buzz")
-    if i % 15:
+    if i % 15 == 0:
         print("FizzBuzz")
     else:
         print(i)
