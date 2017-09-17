@@ -83,5 +83,3 @@ for i in range(1,100):
     else:
         print(i)
 
-
-stdio.writeln('Hello, World')
