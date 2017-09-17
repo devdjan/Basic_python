@@ -68,3 +68,16 @@ triangle(4,5,6)
 # }
 #Loop for using
 # any(*variable). ()python tuples
+
+#--------------------------------------------------------
+# FizzBuzz
+#--------------------------------------------------------
+for i in range(1,100):
+    if i % 3:
+        print("Fizz")
+    if i % 5:
+        print("Buzz")
+    if i % 15:
+        print("FizzBuzz")
+    else:
+        print(i)
