@@ -50,3 +50,35 @@ array.reverse()
 print(array)
 
 #Tomorrov i will try to write some function of "reverse"
+# Cheto ne vishlo(
+# Я бы взял [-1] массива в с помощью функции по аналогии с append, только
+# наоборот, записал бы в другой список
+
+#----------------------------------------------------------
+#Write a Python program to get the length in bytes of one array item in the internal representation.
+# array = [0,1,34,-1,3]
+# array.itemsize
+# print(array)
+
+#----------------------------------------------------------
+# in bytes
+def byte_size(byte):
+    return len(byte.encode('utf-8'))
+print(byte_size)
+
+#----------------------------------------------------------
+# Stack overflow solution using sys library
+import sys
+array_test = [1,2,3,-1]
+sys.getsizeof[1,23,4]
+print(array_test)
+
+#----------------------------------------------------------
+# Write a Python program to append items from inerrable to the end of the array.
+test = [1,2,3,4,5,6]
+# Может воспользоваться методом extended
+def append_items(test):
+    return append_items().extend
+
+#----------------------------------------------------------
+# Convert an array to an array of machine values and return the bytes representation
