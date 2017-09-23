@@ -4,7 +4,7 @@ import stdio
 n = 4
 a = [] #initializing empty array
 for i in range(n):
-    a += [0.0] # addingone elem in the end of array
+    a += [0.0] # adding one elem in the end of array
 
 # Some fundamental operations
 # a = [1,2,3,4,5]
@@ -21,6 +21,43 @@ for v in a:
     total += v
 average = total / len(a)
 stdio.writeln(average)
+
+# Написать функцию вычисляющую среднее значение массива
+# a = [1,2,3,4,0,-1]
+# total = 0
+# for i in a:
+#     total = total + a
+#     aver = total / len(a)
+
+
+# Alias
+# aliasing. Когда две переменные ссылаются на один и тот же объект
+x = [1,3,4,0,90,905]
+y = [6,4,21,4345,2]
+x = y
+print(y)
+
+
+#----------------------------------------------------------
+#ИГРА В КАРТЫ
+#----------------------------------------------------------
+SUITS = ['Clubs', 'Diamonds', 'Hearts', 'Spades']
+RANKS = ['2', '3', '4', '5', '6', '7','8','9','10', 'Jack', 'Queen', 'King', 'Ace']
+
+# rank = random.randrange(0, len(RANKS))
+# suit = random.randrange(0, len(SUITS))
+# stdio.writeln(RANKS[rank] + ' of ' + SUITS[suit])
+
+# Иницализируем массив массив длиной 52 представляющего колоду карт,
+# используя лва только что определенных массива
+
+desk = []
+for rank in RANKS:
+    for suit in SUITS:
+        card = rank + ' of ' + suit
+        desk += [card] # Равносильно desk = desk + card ?)
+        print(desk)
+
 
 #----------------------------------------------------------
 #Write a Python program to create an array of 5 integers
@@ -64,14 +101,14 @@ print(array)
 # in bytes
 def byte_size(byte):
     return len(byte.encode('utf-8'))
-print(byte_size)
+
 
 #----------------------------------------------------------
 # Stack overflow solution using sys library
 import sys
-array_test = [1,2,3,-1]
-sys.getsizeof[1,23,4]
-print(array_test)
+# array_test = [1,2,3,-1]
+# getsizeof[1,23,4]
+# print(array_test)
 
 #----------------------------------------------------------
 # Write a Python program to append items from inerrable to the end of the array.
@@ -82,3 +119,5 @@ def append_items(test):
 
 #----------------------------------------------------------
 # Convert an array to an array of machine values and return the bytes representation
+# Не понял как сделать, гуглил. Есть только варианты с помощью библиотек(
+
