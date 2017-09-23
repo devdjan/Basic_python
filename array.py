@@ -1,4 +1,6 @@
 import stdio
+import stdarray
+import random
 # Start doing task from books/ Added stdio library, to
 # use some code from book;
 n = 4
@@ -50,13 +52,32 @@ RANKS = ['2', '3', '4', '5', '6', '7','8','9','10', 'Jack', 'Queen', 'King', 'Ac
 
 # Иницализируем массив массив длиной 52 представляющего колоду карт,
 # используя лва только что определенных массива
-
-desk = []
+deck = []
 for rank in RANKS:
     for suit in SUITS:
         card = rank + ' of ' + suit
-        desk += [card] # Равносильно desk = desk + card ?)
-        print(desk)
+        deck += [card] # Равносильно desk = desk + card ?)
+
+
+# Обмен єлементов местами. Поменяем карті с индексами i и j
+# Только изменим порядок элементов массива на обратный
+# temp = deck[i]
+# deck[i] = deck[j]
+# deck[j] = temp
+# Меняется порядок элементов в массиве, но не сам набор эл. в массиве
+# Когда i и j  равны то массив не изменяется
+
+
+# Перестановка колоды карт
+n = len(deck)
+for i in range(n):
+    r = random.randrange(i, n)
+    temp = deck[r]
+    deck[r] = deck[i]
+    deck[i] = temp
+    print(temp)
+
+
 
 
 #----------------------------------------------------------
