@@ -41,7 +41,7 @@ print(y)
 
 
 #----------------------------------------------------------
-#ИГРА В КАРТЫ
+# ИГРА В КАРТЫ
 #----------------------------------------------------------
 SUITS = ['Clubs', 'Diamonds', 'Hearts', 'Spades']
 RANKS = ['2', '3', '4', '5', '6', '7','8','9','10', 'Jack', 'Queen', 'King', 'Ace']
@@ -76,6 +76,70 @@ for i in range(n):
     deck[r] = deck[i]
     deck[i] = temp
     print(temp)
+
+#----------------------------------------------------------
+# Выборка без замены
+#----------------------------------------------------------
+import random
+import sys
+import stdarray
+import stdio
+
+m = 11#
+n = 120
+
+# Инициализация одномерного массива
+perm = stdarray.create1D(n, 0)
+for i in range(n):
+    perm[i] = i
+# Случайная выборка м в предело до н
+for i in range(m):
+    r = random.randrange(i, n)
+
+# Обмен массивов
+temp = perm[r]
+perm[r] = perm[i]
+perm[i] = temp
+
+# Вывод
+for i in range(m):
+    stdio.write(str(perm[i]) + ' ')
+stdio.writeln()
+
+#----------------------------------------------------------
+# Модель коллекции купонов
+#----------------------------------------------------------
+# Получает число н, создает последовательность случайных
+# целочисленных значений от 0 до н-1
+# Значения - карточки. И мы хотим знать встречалась ли она прежде
+# isCollected - массив в котором [индекс] = значению
+# т.е isCollected[i] - True если встретится карточка со значением i
+# False - в противном случае
+
+import random
+import sys
+import stdarray
+import stdio
+
+n = 5
+count = 0  # Кол-во собранных купонов
+collectedCount = 0 # Количество "различных" собранных купонов
+# isCollected[i] - Проверяем есть ли уже купон i ?
+# value - значение текущего купона
+
+isCollected = stdarray.create1D(n, False)
+# Проверяем
+while (collectedCount < n):
+    value = random.randrange(0, n)
+    count += 1
+
+if not isCollected[value]:
+    collectedCount += 1
+    isCollected[value] = True
+stdio.writeln(count)
+
+
+
 
 
 
