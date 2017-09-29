@@ -40,3 +40,16 @@ print(rectan_1.square()) # 600
 #         свою.ширину * на свою.высоту
 
 
+class triangle(a,b,c):
+    a = 10
+    b = 10
+    c = 3
+
+    def triangle(self):
+        if (self.a < self.b + self.c) and (self.b < self.a + self.c) and (self.c + self.b + self.a):
+            print("Exist")
+        else:
+            print("Does not exists")
+        return triangle
+    def perimeter(self):
+        return self.a + self.b + self.c
