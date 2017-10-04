@@ -39,17 +39,45 @@ print(rectan_1.square()) # 600
 #         возвращает
 #         свою.ширину * на свою.высоту
 
+import math
+# Первым параметром, как и у любого другого метода, у __init__ является self, на
+# место которого подставляется объект в момент его создания. Второй и последующие
+# параметры заменяются аргументами, переданными в "КОНСТРУКТОР" при вызове класса
+    class Triangle(object):
+        def __init__(self, a, b, c):
+            self.a = a
+            self.b = b
+            self.c = c
 
-class triangle(a,b,c):
-    a = 10
-    b = 10
-    c = 3
+        #create class constructor
+         #initialise variables
+        def exists(self):
+            if(self.a <= 0) or (self.b <= 0) or (self.c <= 0):
+                return False
+            if (self.a < self.b + self.c) and (self.b < self.a + self.c) and (self.c < self.b + self.a):
+                return True
 
-    def triangle(self):
-        if (self.a < self.b + self.c) and (self.b < self.a + self.c) and (self.c + self.b + self.a):
-            print("Exist")
-        else:
-            print("Does not exists")
-        return triangle
-    def perimeter(self):
-        return self.a + self.b + self.c
+    # define class method which guesses exist our triangle
+    # our data is correct ( mean <= 0)
+        def get_angles(self):
+            if not self.exists():
+                return None
+
+
+    # define function which get angles by itself
+        # Guess wtah it will return
+
+
+        # cos(y) = (a ^2 + c ^ 2 - b^2) / (2 * a * c)
+
+
+
+
+        # Our static method
+            #what it return? math pow
+        @staticmethod
+        def _cos_triangle(a, b, c):
+            return math.pow(a, 2) + math.pow(b, 2) + math.pow(c, 2) /(2 * a * b)
+
+
+# define метод класса треугольник
