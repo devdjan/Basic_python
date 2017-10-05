@@ -66,8 +66,10 @@ import math
 
     # define function which get angles by itself
         # Guess wtah it will return
-
-
+    cos_gamma + self._cos_triangle(self.a, self.b, self.c)
+    cos_beta = self._cos_triangle(self.a, self.b, self.c)
+    cos_alpha = 180 - cos_beta - cos_gamma
+    return cos_alpha, cos_beta, cos_gamma
         # cos(y) = (a ^2 + c ^ 2 - b^2) / (2 * a * c)
 
 
@@ -75,9 +77,9 @@ import math
 
         # Our static method
             #what it return? math pow
-        @staticmethod
-        def _cos_triangle(a, b, c):
-            return math.pow(a, 2) + math.pow(b, 2) + math.pow(c, 2) /(2 * a * b)
+    @staticmethod
+    def _cos_triangle(a, b, c):
+        return math.pow(a, 2) + math.pow(b, 2) + math.pow(c, 2) /(2 * a * b)
 
 
 # define метод класса треугольник
