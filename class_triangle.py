@@ -43,43 +43,39 @@ import math
 # Первым параметром, как и у любого другого метода, у __init__ является self, на
 # место которого подставляется объект в момент его создания. Второй и последующие
 # параметры заменяются аргументами, переданными в "КОНСТРУКТОР" при вызове класса
-    class Triangle(object):
-        def __init__(self, a, b, c):
-            self.a = a
-            self.b = b
-            self.c = c
+class Triangle(object):
+    def __init__(self, a = 2, b = 2, c = 10): # Типа если я тупо вызову - Вернет ошибку. А так не вернет.
+        self.a = a
+        self.b = b
+        self.c = c
 
-        #create class constructor
-         #initialise variables
-        def exists(self):
-            if(self.a <= 0) or (self.b <= 0) or (self.c <= 0):
-                return False
-            if (self.a < self.b + self.c) and (self.b < self.a + self.c) and (self.c < self.b + self.a):
-                return True
+#defining class method
+    def exists(self):
+        if (self.a <= 0) or (self.b <= 0) or (self.c <= 0):
+            return False
+        if (self.a < self.b + self.c) and (self.b <= self.a + self.c) and (self.c <= self.a + self.b):
+            return True
 
-    # define class method which guesses exist our triangle
-    # our data is correct ( mean <= 0)
-        def get_angles(self):
-            if not self.exists():
-                return None
+    def get_angles(self):
+        if not self.exists():
+            return None
+        if self.exists():
+            cos_gamma = self._cos_triangle(self.a, self.b, self.c) #calling statimethod
+            cos_beta = self._cos_triangle(self.a, self.b, self.c)
+            cos_alpha = 180.0 - cos_beta - cos_gamma
+            return cos_alpha, cos_beta, cos_gamma
 
-
-    # define function which get angles by itself
-        # Guess wtah it will return
-    cos_gamma + self._cos_triangle(self.a, self.b, self.c)
-    cos_beta = self._cos_triangle(self.a, self.b, self.c)
-    cos_alpha = 180 - cos_beta - cos_gamma
-    return cos_alpha, cos_beta, cos_gamma
-        # cos(y) = (a ^2 + c ^ 2 - b^2) / (2 * a * c)
+ #No self parameter? Why
+@staticmethod
+def _cos_triangle(a, b, c):
+    return math.pow(a, 2) + math.pow(b, 2) + math.pow(c, 2) / (2 * a * b)
 
 
+#Create some object or instance
+t_first = Triangle(2,3,0)
+# t_second = Triangle(2,2,3) # error 'Triangle' object has no attribute '_cos_triangle'
+t_third = Triangle()
 
 
-        # Our static method
-            #what it return? math pow
-    @staticmethod
-    def _cos_triangle(a, b, c):
-        return math.pow(a, 2) + math.pow(b, 2) + math.pow(c, 2) /(2 * a * b)
-
-
-# define метод класса треугольник
+# print(t_second.get_angles()) # None
+print(t_third.get_angles()) # None
