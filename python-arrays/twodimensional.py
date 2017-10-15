@@ -51,6 +51,23 @@ print(nums[999])
 
 # Второй вариант. https://stackoverflow.com/questions/1401712/how-can-the-euclidean-distance-be-calculated-with-numpy
 # from math import sqrt
-# a = [1,2,3]
-# b = [1,1,1]
+# a = (1,2,3)
+# b = (1,1,1)
 # print(sqrt( sum(a - b)**2 for a, b in zip(a,b)))
+
+# Третий вариант из книги.
+import stdio
+
+def eucld(p, q):
+    if q == 0:
+        return p
+    return eucld(q, p % q)
+
+def main():
+    p = 2
+    q = 2
+    divisor = eucld(p, q)
+    stdio.writeln(divisor)
+
+if __name__ == '__main__':
+    main()
