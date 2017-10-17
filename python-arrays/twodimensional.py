@@ -71,3 +71,25 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+#1.4.3
+# Составить фрагмент кода меняющий на
+# обратный порядок элементов в одном массиее
+a = [2,3,3]
+n = len(a)
+for i in range(n // 2):
+    temp = a[i]
+    a[i] = a[n-1-i]
+    a[n-1-i] = temp
+print(temp)
+
+# Второй способ
+b = [1,2,3]
+b[0], b[2] = b[2], b[0]
+print(b)
+
+# Третий способ
+import random
+x = [1,2,3,4]
+random.shuffle(x)
+print(x)
