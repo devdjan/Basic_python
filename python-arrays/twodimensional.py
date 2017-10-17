@@ -93,3 +93,9 @@ import random
 x = [1,2,3,4]
 random.shuffle(x)
 print(x)
+
+# Четверый способ
+mylist = ['a','b','c']
+myorder = [2,0,1]
+mylist = [mylist[i] for i in myorder]
+print(mylist)
