@@ -63,19 +63,18 @@ spiral_func(int(input()))
 # тоже самое что и вращение на 90 градусов против часовой стрелки
 # 3. Вернуться к шагу 1
 
-import intertools
-import i
-arr = [[1,2,3,4],
-       [12,13,14,5],
-       [11,16,15,6],
-       [10,9,8,7]]
 
-def transpose_and_yield_top(arr):
-    while arr:
-        yield arr[0]
-        arr = list(reversed(zip(*arr[1:])))
-
-print list(itertools.chain(*transpose_and_yield_top(arr)))
+# arr = [[1,2,3,4],
+#        [12,13,14,5],
+#        [11,16,15,6],
+#        [10,9,8,7]]
+#
+# def transpose_and_yield_top(arr):
+#     while arr:
+#         yield arr[0]
+#         arr = list(reversed(zip(*arr[1:])))
+#
+# print list(itertools.chain(*transpose_and_yield_top(arr)))
 
 
 # 2
@@ -118,3 +117,42 @@ def print_spiral(ar):
             inc_c, inc_r = -inc_r, inc_c
 
 print_spiral(ar)
+
+
+# 3
+# The same example
+# Recursive
+
+ar = [
+    [0, 1, 2, 3, 4],
+    [15, 16, 17, 18, 5],
+    [14, 23, 24, 19, 6],
+    [13, 22, 21, 20, 7],
+    [12, 11, 10, 9, 8]]
+
+def print_spiral(ar, sr=0, sc=0, er=None, ec=None):
+    er = er or len(ar)- 1
+    ec = ec or len(ar[0]) - 1
+
+    if sr > er or sc > ec:
+        print()
+        return
+
+
+    # print the outer layer
+    top, bottom, left, right = [], [], [], []
+    for c in range(sc, ec+1):
+        top.append(ar[sr][c])
+        if sr != er:
+            bottom.append(ar[er][ec-(c-sc)])
+
+    for r in range(sr+1, er):
+        right.append(ar[r][ec])
+        if ec != sc:
+            left.append(ar[er-(r-sr)][sc])
+
+    print(" ".join([str(a) for a in top + right + bottom + left])),
+    # peel next layer of onion
+
+    print_spiral(ar, sr + 1, sc + 1, er - 1, ec - 1)
+
