@@ -89,6 +89,11 @@ ar = [
     [13, 22, 21, 20, 7],
     [12, 11, 10, 9, 8]]
 
+# print(len(ar)) # amount of lists = 5 => rows
+# print(len(ar[0])) # lenght of first list = 5 => cols
+
+
+
 def print_spiral(ar):
     # if rect array
     rows, cols = len(ar), len(ar[0])
