@@ -1,13 +1,32 @@
-# не добавляйте кода вне функции
+# How i solve task with additional help
+d = {1: 'Kiryha', 2:'Kirusha'}
 def update_dictionary(d, key, value):
-    for key in d:
+        # put your python code here
         if key in d:
-            return
-        elif key not in d:
-            return d[key*2].append[value]
-            if [key*2] not in d:
-            # Нужно добавить ключ*2 в словарь и сопоставить ему список из переданного єлемента
-            # d.append[key*2] сопоставить, как?
-    # put your python code here
+            d[key].append(value)
+        elif 2 * key in d:
+            d[2 * key].append(value)
+        else:
+            d[2 * key] = []
+            d[2 * key] = [value]
 
-# не добавляйте кода вне функции
+
+update_dictionary(d, 3, 'Sasha')
+print(d)
+
+# The another one, from forum using "setdefault"
+d = {1: 'Kiryha', 2:'Kirusha'}
+def update_dictionary(d, key, value):
+    if key in d:
+        d.setdefault(2 * key,[]).append(value)
+    else:
+        d[key]+=[value]
+
+print(d)
+
+# Best variant 2.45
+def update_dictionary(d, key, value):
+    key <<= key not in d
+    d.setdeafult(key, []).append(value)
+
+# P.S. еще нужно разобрать код, пару раз хотябы
