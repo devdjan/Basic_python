@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import sklearn
 import sklearn.cross_validation
 import statsmodels.api as sm
+import math
 
 import seaborn as sns
 sns.set_style('whitegrid')
@@ -72,6 +73,17 @@ plt.ylabel("Predicted prices: $\hat{Y}_i$")
 plt.title("Prices vs Predicted prices: $Y_i$ vs $\hat{Y}_i$") # Let's show the plot 
 plt.show()
 
+
 # Now let's check Mean Squared Error
 mse = sklearn.metrics.mean_squared_error(Y_test, Y_pred)
 print(mse)
+
+# Root mean squared error
+RMSE = math.sqrt(mse)
+print(RMSE)
+
+# Mean absolute percentage error
+def mean_absolute_percentage_error(y_true, y_pred):
+    y_true, y_pred = np.array(y_true), np.array(y_pred)
+    return np.mean(np.abs((y_true - y_pred) / y_true)) * 100
+print(mean_absolute_percentage_error(y_true = Y_test, y_pred = Y_pred))
