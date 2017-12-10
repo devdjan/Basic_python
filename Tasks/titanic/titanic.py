@@ -33,3 +33,5 @@ print(train_df.columns.values)
 
 #preview the data
 train_df.head()
+
+train_df.tail()
