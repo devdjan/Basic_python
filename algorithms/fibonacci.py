@@ -13,6 +13,5 @@ print(fibonacci(4)) # вернет нам три, т.к. н != 0 и н != 1. Т�
 # fibonacci(3) = (fibonacci(2)+fibonacci(1))
 # fibonacci(2) = (fibonacci(1)+fibonacci(0))
 
-print(fibonacci(3)) #
 
 
