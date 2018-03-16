@@ -26,3 +26,22 @@ while num > 0:
 if isNeg:
     result = '-' + result
 print(result)
+
+
+# For better understanding alwayse split hte problem
+# we want to count negative numbers
+# How to check is number negative?
+#   if number < o:
+# If we have many numbers, code will be like that:
+#   for number in numbers:
+#       if number < 0:
+# So what we want to do? Count them.
+print('----------------------------------')
+numbers = [1,-1,-2,-3,-123,1,43,3,5,5,1,2]
+count = 0
+for number in numbers:
+    if number < 0:
+        count += 1
+print(count)
+# Or
+# sum(1 for number in numbers if number < 0)
