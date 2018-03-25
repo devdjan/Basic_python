@@ -33,3 +33,15 @@ gcdIter(3, 5)
 # So, b = b - a <=> b = 2 - 1 | b = 1
 # Check while condition a != b, no no no. A is equal to b, a = 1, and b = 1
 # We go to return statement (line 12). And return value of a, It will return to us - 1 :)
+
+
+def gcdIterative(x, y):
+    '''
+    a, b: positive integers
+
+    returns: a positive integer, the greatest common divisor of a & b.
+    '''
+    # Your code here
+    while y != 0:
+        (x, y) = (y, x % y)
+    return x
