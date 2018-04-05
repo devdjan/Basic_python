@@ -69,5 +69,20 @@ while True:
         print_board()
         print('O player wins the game. Congratulations!')
         break
-#
+
+
+
+    # Check for board (is the board full)
+    isFull = True
+    if '_' in board:
+        isFull = False
+    # If it is full
+    if isFull == True:
+        print('Board is full. End of the game')
+        break
+
+    # Как сделать проверку на заполнение всей таблицы?
+    # What to do if the board is full
+
+
 #
