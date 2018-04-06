@@ -12,6 +12,7 @@
 # Stage 4
 # reuse code, where we check winning combinations
 # Write two functions to check if o winner or X
+# Function to check If the board is full - Does not work, will fix later
 
 import time
 
@@ -23,36 +24,28 @@ def print_board():
     print(board[6] + '|' + board[7] + '|' + board[8])
 
 # Checking if X is a winner
-def is_x_winner(board):
-    if (board[0] == 'X' and board[1] == 'X' and board[2] == 'X') or \
-            (board[3] == 'X' and board[4] == 'X' and board[5] == 'X') or \
-            (board[6] == 'X' and board[7] == 'X' and board[8] == 'X') or \
-            (board[0] == 'X' and board[3] == 'X' and board[6] == 'X') or \
-            (board[1] == 'X' and board[4] == 'X' and board[7] == 'X') or \
-            (board[2] == 'X' and board[5] == 'X' and board[8] == 'X') or \
-            (board[0] == 'X' and board[4] == 'X' and board[8] == 'X') or \
-            (board[2] == 'X' and board[4] == 'X' and board[6] == 'X'):
+def had_player_won(board, player):
+    if (board[0] == player and board[1] == player and board[2] == player) or \
+            (board[3] == player and board[4] == player and board[5] == player) or \
+            (board[6] == player and board[7] == player and board[8] == player) or \
+            (board[0] == player and board[3] == player and board[6] == player) or \
+            (board[1] == player and board[4] == player and board[7] == player) or \
+            (board[2] == player and board[5] == player and board[8] == player) or \
+            (board[0] == player and board[4] == player and board[8] == player) or \
+            (board[2] == player and board[4] == player and board[6] == player):
         return True
     else:
         return False
 
-# Checking if O is a winner
-def is_o_winner(board):
-    if (board[0] == 'O' and board[1] == 'O' and board[2] == 'O') or \
-            (board[3] == 'O' and board[4] == 'O' and board[5] == 'O') or \
-            (board[6] == 'O' and board[7] == 'O' and board[8] == 'O') or \
-            (board[0] == 'O' and board[3] == 'O' and board[6] == 'O') or \
-            (board[1] == 'O' and board[4] == 'O' and board[7] == 'O') or \
-            (board[2] == 'O' and board[5] == 'O' and board[8] == 'O') or \
-            (board[0] == 'O' and board[4] == 'O' and board[8] == 'O') or \
-            (board[2] == 'O' and board[4] == 'O' and board[6] == 'O'):
-        return True
-    else:
+# Main function to chek if the board is full or not
+# Небольшой костыль
+def is_board_full(board):
+    if '_' in board:
         return False
-
+    else:
+        return True
 
 while True:
-    # Printing board of the game
     print_board()
 
     # Player X input
@@ -66,13 +59,19 @@ while True:
         # Как сделать, я хожу например O и при попадании в поле, где уже стоит(крестик / нолик)
         # пишет "Это занятое место", и отдает ход игроку Х
 
-    if is_x_winner(board): # If X wins(value of func. is True, we keep doing code
+# Т.е. в player - мы передаем нашего игрока икс, также и для О
+    if had_player_won(board, "X"): # If X wins(value of func. is True, we keep doing code
         print_board()
         print('X player wins the game. Congratulations!')
         break
 
     # Print board. To see the moves of X / O players
     print_board()
+
+    # Chek Is the board full
+    if is_board_full(board):
+        print('There are no empty space!')
+        break
 
     # Player O input
     choice = int(input('Write a number form 0 to 8 for O: '))
@@ -83,18 +82,12 @@ while True:
         print('Sorry, that space is not empty')
         time.sleep(1)
 
-
-    if is_o_winner(board):
+    if had_player_won(board, 'O'):
         print_board()
         print('O player wins the game. Congratulations!')
         break
 
-
-    # Check for board (is the board full)
-    isFull = True
-    if '_' in board:
-        isFull = False
-    # If it is full
-    if isFull == True:
-        print('Board is full. End of the game')
+    # Chek Is the board full
+    if is_board_full(board):
+        print('There are no empty space!')
         break
