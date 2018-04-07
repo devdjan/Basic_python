@@ -14,25 +14,36 @@
 # Write two functions to check if o winner or X
 # Function to check If the board is full - Does not work, will fix later
 
-import time
+# Stage 5
+# Creating game AI
+# def computer moves(board, player):
+# Computer will return us random number - random move
+# Number should be on empty sport
 
-board = ['_'] * 9 # we have created a list containing _ 9 characters
-# ['_', '_' ...]
+# Stage 6
+# Write code for computer moves
+# Test code
+
+import time
+import random
+
+board = ['', '_', '_', '_', '_', '_', '_', '_', '_', '_']# we have created a list containing _ 9 characters
+
 def print_board():
-    print(board[0] + '|' + board[1] + '|' + board[2])
-    print(board[3] + '|' + board[4] + '|' + board[5])
-    print(board[6] + '|' + board[7] + '|' + board[8])
+    print(board[1] + '|' + board[2] + '|' + board[3])
+    print(board[4] + '|' + board[5] + '|' + board[6])
+    print(board[7] + '|' + board[8] + '|' + board[9])
 
 # Checking if X is a winner
 def had_player_won(board, player):
-    if (board[0] == player and board[1] == player and board[2] == player) or \
-            (board[3] == player and board[4] == player and board[5] == player) or \
-            (board[6] == player and board[7] == player and board[8] == player) or \
-            (board[0] == player and board[3] == player and board[6] == player) or \
+    if (board[1] == player and board[2] == player and board[3] == player) or \
+            (board[4] == player and board[5] == player and board[6] == player) or \
+            (board[7] == player and board[8] == player and board[9] == player) or \
             (board[1] == player and board[4] == player and board[7] == player) or \
             (board[2] == player and board[5] == player and board[8] == player) or \
-            (board[0] == player and board[4] == player and board[8] == player) or \
-            (board[2] == player and board[4] == player and board[6] == player):
+            (board[3] == player and board[6] == player and board[9] == player) or \
+            (board[1] == player and board[5] == player and board[9] == player) or \
+            (board[3] == player and board[5] == player and board[7] == player):
         return True
     else:
         return False
@@ -44,6 +55,18 @@ def is_board_full(board):
         return False
     else:
         return True
+
+def computer_move(board, player):
+    if board[5] == '_':
+        return 5
+
+    while True:
+        move = random.randint(1,9)
+        # If computer move to blank, go ahead
+        if board[move] == '_':
+             return move
+             break
+    return 5
 
 while True:
     print_board()
@@ -59,13 +82,11 @@ while True:
         # Как сделать, я хожу например O и при попадании в поле, где уже стоит(крестик / нолик)
         # пишет "Это занятое место", и отдает ход игроку Х
 
-# Т.е. в player - мы передаем нашего игрока икс, также и для О
     if had_player_won(board, "X"): # If X wins(value of func. is True, we keep doing code
         print_board()
         print('X player wins the game. Congratulations!')
         break
 
-    # Print board. To see the moves of X / O players
     print_board()
 
     # Chek Is the board full
@@ -74,7 +95,7 @@ while True:
         break
 
     # Player O input
-    choice = int(input('Write a number form 0 to 8 for O: '))
+    choice = computer_move(board, 'O')
     # Checking if the space is empty or not
     if board[choice] == '_':
         board[choice] = 'O'
