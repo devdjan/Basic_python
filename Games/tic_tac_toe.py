@@ -60,23 +60,13 @@ def is_board_full(board):
         return True
 
 def computer_move(board, player):
-    for i in range(1,2,3):
-    # winning combinations, checking columns
-        if board[i] == player and board[i+3] == player and board[i+6] == '_':
-            return i+6
-        if board[i] == player and board[i+6] == player and board[i+3] == '_':
-            return i+3
-        if board[i+3] == player and board[i+6] == player and board[i] == '_':
-            return i
-
-    # if board[2] == player and board[5] == player and board[8] == '_':
-    #     return 8
-    # if board[2] == player and board[8] == player and board[5] == '_':
-    #     return 5
-    # if board[5] == player and board[8] == player and board[2] == '_':
-    #     return 2
-
-
+    for i in range (1,10):
+        if board[i] == '_':
+            board[i] = player
+            if had_player_won(board,player):
+                return i
+            else:
+                board[i] = '_'
 
     if board[5] == '_':
         return 5
