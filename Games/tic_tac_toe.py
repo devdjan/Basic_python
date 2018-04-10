@@ -52,7 +52,7 @@ def had_player_won(board, player):
         return False
 
 # Main function to chek if the board is full or not
-# Небольшой костыль
+
 def is_board_full(board):
     if '_' in board:
         return False
