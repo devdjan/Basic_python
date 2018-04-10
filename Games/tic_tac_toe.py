@@ -24,6 +24,9 @@
 # Write code for computer moves
 # Test code
 
+# Stage 7
+# Write some combinations for computer to win the game if computer have 1 and 7 moves on board, so put 4
+
 import time
 import random
 
@@ -57,6 +60,24 @@ def is_board_full(board):
         return True
 
 def computer_move(board, player):
+    for i in range(1,2,3):
+    # winning combinations, checking columns
+        if board[i] == player and board[i+3] == player and board[i+6] == '_':
+            return i+6
+        if board[i] == player and board[i+6] == player and board[i+3] == '_':
+            return i+3
+        if board[i+3] == player and board[i+6] == player and board[i] == '_':
+            return i
+
+    # if board[2] == player and board[5] == player and board[8] == '_':
+    #     return 8
+    # if board[2] == player and board[8] == player and board[5] == '_':
+    #     return 5
+    # if board[5] == player and board[8] == player and board[2] == '_':
+    #     return 2
+
+
+
     if board[5] == '_':
         return 5
 
@@ -72,7 +93,7 @@ while True:
     print_board()
 
     # Player X input
-    choice = int(input('Write a number form 0 to 8 for X: '))
+    choice = int(input('Write a number form 1 to 9 for X: '))
     # Checking if the space is empty or not
     if board[choice] == '_':
         board[choice] = 'X'
