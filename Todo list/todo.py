@@ -10,36 +10,83 @@ import random
 # Creating root window
 root = tkinter.Tk()
 
+# Change the background
+root.configure(bg='white')
+
+# Title of the GUI
+root.title('Everyday To Do List!')
+
+# Change the size of the window
+root.geometry('200x450')
+
+# What to do
+tasks = []
+
+# To do list, with default tasks
+tasks = ['Read CS book for 30 minutes', 'Self-development', 'Practise coding', 'Plan my next day']
+
 # Creating functions
+def update_listbox():
+    # Clear current list
+    clear_listbox()
+    for task in tasks:
+        lb_tasks.insert('end',task)
+
+def clear_listbox():
+    lb_tasks.delete(0, 'end')
+
 def add_task():
-    pass
+    # Get a task frob text_input
+    task = text_input.get()
+    # Append it to the list
+    tasks.append(task)
+    # Update the listbox
+    update_listbox()
 
 def delete_all():
-    pass
+    # we are deleting globally
+    global tasks
+    # Clear the tasks
+    tasks = []
+    # Update the listbox
+    update_listbox()
 
 def delete_one():
-    pass
+    # Delete currently selected method
+    task = lb_tasks.get('active')
+    if task in tasks:
+        tasks.remove(task)
+    # Update the listbox
+    update_listbox()
 
 def sort_asc():
-    pass
+    tasks.sort()
+    # Update the listbox
+    update_listbox()
 
 def sort_desc():
-    pass
+    tasks.sort(reverse=True)
+    # Update the listbox
+    update_listbox()
 
 def choose_rand():
-    pass
+    task = random.choice(tasks)
+    # Display the choosed label from tasks
+    lbl_dislpay['text'] = task
 
 def num_of_tasks():
-    pass
+    number_of_tasks = len(tasks)
+    msg = 'Number of tasks: %s' %number_of_tasks
+    lbl_dislpay['text'] = msg
 
-lbl_title = tkinter.Label(root, text="first labellolol")
+lbl_title = tkinter.Label(root, text="What do you want to do ?")
 lbl_title.pack()
 
 lbl_dislpay = tkinter.Label(root, text="")
 lbl_dislpay.pack()
 
-lbl_input = tkinter.Entry(root, width=25)
-lbl_input.pack()
+text_input = tkinter.Entry(root, width=20)
+text_input.pack()
 
 btn_add_task = tkinter.Button(root, text='Add Task', fg="blue", bg="white", width=20, command = add_task)
 btn_add_task.pack()
