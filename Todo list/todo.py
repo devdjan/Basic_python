@@ -1,11 +1,5 @@
 import tkinter
-from tkinter import ttk
 import random
-
-# Creating button
-# root = tkinter.Tk()
-# ttk.Button(root, text="Hello Kiryha").grid()
-# root.mainloop()
 
 # Creating root window
 root = tkinter.Tk()
@@ -22,63 +16,74 @@ root.geometry('200x450')
 # What to do
 tasks = []
 
-# To do list, with default tasks
-tasks = ['Read CS book for 30 minutes', 'Self-development', 'Practise coding', 'Plan my next day']
+# For future i can chage the display of the To do list
+# By using .grid()
+# Divide "All" like two dimensional matrix
+# And not use .pack() but use grid(row = 0, column=1 or 0 or 2)
 
 # Creating functions
 def update_listbox():
-    # Clear current list
+    # Clear current state of list
     clear_listbox()
+    # Insert to the end of the list
     for task in tasks:
-        lb_tasks.insert('end',task)
+        lb_tasks.insert('end', task)
 
 def clear_listbox():
     lb_tasks.delete(0, 'end')
 
 def add_task():
-    # Get a task frob text_input
+    # Read and get task from the text_input
     task = text_input.get()
-    # Append it to the list
-    tasks.append(task)
-    # Update the listbox
-    update_listbox()
+    if task != "":
+        # Append it to the list
+        tasks.append(task)
+        # And update the listbox
+        update_listbox()
+    else:
+        lbl_dislpay['text'] = 'Please enter the task'
+    text_input.delete(0, 'end')
 
 def delete_all():
-    # we are deleting globally
+    # delete all tasks globally (glbl variable)
     global tasks
-    # Clear the tasks
+    # then we clear the list
     tasks = []
-    # Update the listbox
+    # And update the listbox
     update_listbox()
 
+
 def delete_one():
-    # Delete currently selected method
+    # Deliting selected task in Tasks list
     task = lb_tasks.get('active')
     if task in tasks:
         tasks.remove(task)
-    # Update the listbox
+    # And update the listbox
     update_listbox()
 
 def sort_asc():
     tasks.sort()
-    # Update the listbox
+    # And update the listbox
     update_listbox()
+
 
 def sort_desc():
     tasks.sort(reverse=True)
-    # Update the listbox
+    # And update the listbox
     update_listbox()
 
 def choose_rand():
+    # get random task from tasks, using random
     task = random.choice(tasks)
-    # Display the choosed label from tasks
     lbl_dislpay['text'] = task
+
 
 def num_of_tasks():
     number_of_tasks = len(tasks)
-    msg = 'Number of tasks: %s' %number_of_tasks
+    msg = 'The number of tasks: %s' %number_of_tasks
     lbl_dislpay['text'] = msg
 
+# Labels and Buttons
 lbl_title = tkinter.Label(root, text="What do you want to do ?")
 lbl_title.pack()
 
