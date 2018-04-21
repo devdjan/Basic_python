@@ -83,7 +83,7 @@ while True:
     print_board()
 
     # Player X input
-    choice = i----------
+    choice = int(input('Write a number form 1 to 9 for X: '))
     # Checking if the space is empty or not
     if board[choice] == '_':
         board[choice] = 'X'
