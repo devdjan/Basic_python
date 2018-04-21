@@ -18,12 +18,39 @@ class Board():
             self.cells[cell_number] = player
 
     def is_winner(self, player):
-        if self.cells[1] == player and self.cells[2] == player and self.cells[3] == player:
+        for combo in [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]]:
+            result = True
+            for cell_number in combo:
+                if self.cells[cell_number] != player:
+                    result = False
+            if result == True:
+                return True
+
+        return False
+
+    def is_full(self):
+        is_full = 0
+        for cell in self.cells:
+            if cell != ' ':
+                is_full += 1
+        if is_full == 9:
             return True
+        else:
+            return False
 
     # Reset the board
     def reset_board(self):
         self.cells = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+
+    def ai_moves(self, player):
+        if self.cells[5] == ' ':
+            self.update_cell(5, player)
+
+        # Random choice
+        for i in range(1, 10):
+            if self.cells[i] == ' ':
+                self.update_cell(i, player)
+                break
 
 
 board = Board()
@@ -64,10 +91,33 @@ while True:
         else:
             break
 
+    if board.is_full():
+        print('\nBoard is Full!')
+        play_again = str(input('Do you want to play again ? (Y,N)')).upper()
+        if play_again == 'Y':
+            board.reset_board()
+            continue
+        else:
+            break
+
     # creating O player
-    o_choise = int(input('\nO player) Choose the number from 1 - 9: '))
-    # Update the information - Created a fucntion update_cell
-    board.update_cell(o_choise, 'O')
+    board.ai_moves('O')
+    refresh_screen()
 
+    if board.is_winner('O'):
+        print('\nO winS!')
+        play_again = str(input('Do you want to play again ? (Y,N)')).upper()
+        if play_again == 'Y':
+            board.reset_board()
+            continue
+        else:
+            break
 
-
+    if board.is_full():
+        print('\nBoard is Full!')
+        play_again = str(input('Do you want to play again ? (Y,N)')).upper()
+        if play_again == 'Y':
+            board.reset_board()
+            continue
+        else:
+            break
